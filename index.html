@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Academic Homepage</title>
-    <!-- Adding Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -24,7 +23,7 @@
             --box-shadow: 0 10px 30px rgba(46, 23, 96, 0.1);
         }
 
-        /* Base Styles with Modern Typography */
+        /* Base Styles */
         body {
             font-family: 'Space Grotesk', sans-serif;
             line-height: 1.8;
@@ -40,7 +39,13 @@
             letter-spacing: -0.02em;
         }
 
-        /* Enhanced Navigation */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -49,7 +54,6 @@
             backdrop-filter: blur(10px);
             box-shadow: var(--box-shadow);
             z-index: 1000;
-            transition: var(--transition-speed);
         }
 
         .nav-content {
@@ -57,6 +61,22 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-speed);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
         }
 
         .logo {
@@ -68,132 +88,130 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Modernized Hero Section */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, 
-                var(--gradient-start), 
-                var(--gradient-end));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: var(--light-text);
+            padding: var(--section-padding) 0;
             position: relative;
-            overflow: hidden;
+            margin-top: 0;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('/api/placeholder/1400/800') center/cover;
-            opacity: 0.1;
-            animation: pulse 8s infinite;
+        .profile {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.1; }
-            50% { opacity: 0.15; }
-            100% { opacity: 0.1; }
-        }
-
-        /* Enhanced Profile Section */
         .profile-image {
             width: 350px;
             height: 350px;
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             object-fit: cover;
             box-shadow: var(--box-shadow);
-            transition: all 0.5s ease-in-out;
             animation: morphing 10s infinite;
         }
 
-        @keyframes morphing {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        .profile-info h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
         }
 
-        /* Modernized Section Cards */
+        .profile-info h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: var(--section-padding) 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .section-content {
             background: var(--card-background);
             padding: 3rem;
             border-radius: 24px;
             box-shadow: var(--box-shadow);
-            transition: all var(--transition-speed);
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 2rem;
         }
 
-        .section-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, 
-                var(--gradient-start), 
-                var(--gradient-end));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
+        /* Publications Grid */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .section-content:hover::before {
-            transform: scaleX(1);
-        }
-
-        /* Enhanced Publication Cards */
         .publication-card {
             background: var(--card-background);
             padding: 2rem;
             border-radius: 16px;
             box-shadow: var(--box-shadow);
             transition: all var(--transition-speed);
-            border: 1px solid rgba(46, 23, 96, 0.1);
         }
 
         .publication-card:hover {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(46, 23, 96, 0.15);
         }
 
-        /* Modern Contact Section */
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, 
-                var(--gradient-start), 
-                var(--gradient-end));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
             border-radius: 15px;
-            transform: rotate(45deg);
-            transition: all var(--transition-speed);
         }
 
-        .contact-icon i {
-            transform: rotate(-45deg);
-            font-size: 1.2rem;
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .contact-item:hover .contact-icon {
-            transform: rotate(90deg);
-        }
-
-        /* Enhanced Social Links */
         .social-links a {
-            position: relative;
+            color: var(--light-text);
+            font-size: 1.5rem;
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             transition: all var(--transition-speed);
         }
 
@@ -202,35 +220,152 @@
             transform: translateY(-5px);
         }
 
-        /* Animation for Section Reveal */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section.visible {
-            animation: slideUp 0.6s ease forwards;
-        }
-
-        /* Responsive Enhancement */
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .profile {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
             .profile-image {
+                margin: 0 auto;
                 width: 250px;
                 height: 250px;
             }
 
-            .section-content {
-                padding: 2rem;
+            .nav-links {
+                display: none;
+            }
+
+            .profile-info h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-info h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
-    <!-- Rest of the HTML remains the same as previous version -->
 </head>
-<!-- Rest of the code remains the same as previous version -->
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">Your Name</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="profile">
+                <img src="/api/placeholder/350/350" alt="Your Name" class="profile-image">
+                <div class="profile-info">
+                    <h1>Your Name</h1>
+                    <h2>PhD Student in [Your Field]</h2>
+                    <p>[University Name]</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>About Me</h2>
+                <p>I am a PhD student at [University Name] working on [brief description of your research]. My research interests include [research interests].</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Research</h2>
+                <p>My current research focuses on [research focus]. I am particularly interested in [specific aspects of your research].</p>
+                
+                <h3>Current Projects</h3>
+                <div class="publications-grid">
+                    <div class="publication-card">
+                        <h4>Project Title</h4>
+                        <p>Brief description of the project and its goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Publications</h2>
+                <div class="publications-grid">
+                    <div class="publication-card">
+                        <h4>Publication Title</h4>
+                        <p>Authors, Journal/Conference, Year</p>
+                        <p>Brief description or abstract of the publication.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-content">
+                <h2>Contact</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>your.email@university.edu</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Office</h4>
+                            <p>Building Name, Room Number</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
 </html>
