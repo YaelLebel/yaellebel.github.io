@@ -10,25 +10,52 @@
         content="Yael Lebel, systems biology, computational immunology, immune system dynamics, autoimmune disease modeling, mathematical modeling of immunity, cancer immunology, excitable dynamics, Pareto optimization in biology, network analysis of immune interactions, Bayesian statistics in immunology, autoimmune diseases, mathematical biology">
     <meta name="author" content="Yael Lebel">
 
-    <title>Yael Lebel - Systems biology & Immunology</title>
+    <title>Yael Lebel — Systems Biology &amp; Immunology</title>
+
+    <!-- Social sharing -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Yael Lebel — Systems Biology &amp; Immunology">
+    <meta property="og:description"
+        content="PhD student in Prof. Uri Alon's lab at the Weizmann Institute, using math and physics to uncover design principles in the immune system.">
+    <meta property="og:url" content="https://yaellebel.github.io/">
+    <meta property="og:image" content="https://yaellebel.github.io/profile.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Yael Lebel — Systems Biology &amp; Immunology">
+    <meta name="twitter:description"
+        content="PhD student in Prof. Uri Alon's lab at the Weizmann Institute, using math and physics to uncover design principles in the immune system.">
+
+    <!-- Inline SVG favicon: YL monogram -->
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232E1760'/%3E%3Ctext x='32' y='44' font-family='Georgia, serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3EYL%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
             --primary-color: #2E1760;
+            --primary-700: #24124d;
             --secondary-color: #4C3A51;
             --accent-color: #774181;
+            --gold: #C99A2E;
+            --gold-soft: #E9C767;
             --gradient-start: #2E1760;
-            --gradient-end: #774181;
-            --text-color: #2A2A2A;
+            --gradient-mid: #5a2f74;
+            --gradient-end: #8a4d95;
+            --text-color: #262230;
+            --muted-text: #6a6478;
             --light-text: #FFFFFF;
-            --background-light: #F6F8FF;
+            --background-light: #F7F6FB;
             --card-background: #FFFFFF;
-            --section-padding: 4rem;
-            --transition-speed: 0.3s;
-            --box-shadow: 0 10px 30px rgba(46, 23, 96, 0.1);
+            --border-color: rgba(46, 23, 96, 0.08);
+            --section-padding: 6rem;
+            --transition-speed: 0.28s;
+            --box-shadow: 0 12px 34px rgba(46, 23, 96, 0.09);
+            --box-shadow-hover: 0 22px 50px rgba(46, 23, 96, 0.18);
+            --radius: 16px;
         }
 
         * {
@@ -37,29 +64,55 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 0;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.8;
+            line-height: 1.75;
             background-color: var(--background-light);
             color: var(--text-color);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent-color);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--gold-soft);
+            outline-offset: 3px;
+            border-radius: 6px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 2rem;
             width: 100%;
         }
 
+        /* ---------- Navigation ---------- */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--box-shadow);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed), background var(--transition-speed);
             z-index: 1000;
+        }
+
+        nav.scrolled {
+            border-bottom-color: var(--border-color);
+            box-shadow: 0 6px 24px rgba(46, 23, 96, 0.06);
         }
 
         .nav-content {
@@ -71,293 +124,722 @@
 
         .logo {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo .logo-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(46, 23, 96, 0.25);
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            transition: var(--transition-speed);
+            font-size: 0.98rem;
+            position: relative;
+            padding: 0.25rem 0;
+            transition: color var(--transition-speed);
         }
 
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), var(--gold));
+            transition: width var(--transition-speed);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* ---------- Hero ---------- */
         .hero {
+            position: relative;
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid) 55%, var(--gradient-end));
             color: var(--light-text);
-            padding-top: 80px;
+            padding: 130px 0 80px;
             display: flex;
             align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 460px;
+            height: 460px;
+            top: -140px;
+            right: -120px;
+            background: radial-gradient(circle at center, rgba(233, 199, 103, 0.35), transparent 68%);
+        }
+
+        .hero::after {
+            width: 520px;
+            height: 520px;
+            bottom: -200px;
+            left: -160px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.16), transparent 66%);
         }
 
         .profile {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 340px 1fr;
             gap: 4rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-wrap {
+            position: relative;
+            width: min(320px, 74vw);
+            aspect-ratio: 1;
+            margin: 0 auto;
+        }
+
+        .profile-image-wrap::before {
+            content: "";
+            position: absolute;
+            inset: 18px -18px -18px 18px;
+            border-radius: var(--radius);
+            border: 2px solid rgba(233, 199, 103, 0.6);
         }
 
         .profile-image {
-            width: 350px;
-            height: 350px;
-            border-radius: 16px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius);
             object-fit: cover;
-            box-shadow: var(--box-shadow);
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(233, 226, 245, 0.9));
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
             transition: transform var(--transition-speed);
+        }
+
+        .profile-image-wrap:hover .profile-image {
+            transform: translateY(-4px);
+        }
+
+        .profile-info .eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            margin-bottom: 1rem;
         }
 
         .profile-info h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 3.6rem;
+            line-height: 1.05;
+            margin-bottom: 0.75rem;
             font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         .profile-info h2 {
             font-family: 'Inter', sans-serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 400;
-            margin-bottom: 1rem;
-            opacity: 0.9;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
         }
 
-        .profile-info p {
-            font-size: 1.2rem;
+        .profile-info .affiliation {
+            font-size: 1.1rem;
+            opacity: 0.82;
             margin-bottom: 2rem;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.9rem;
             flex-wrap: wrap;
         }
 
         .social-links a {
             color: var(--light-text);
             text-decoration: none;
-            padding: 0.8rem 1.2rem;
+            padding: 0.7rem 1.1rem;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.55rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: all var(--transition-speed);
         }
 
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(233, 199, 103, 0.6);
+            transform: translateY(-3px);
+        }
+
         .social-links a i {
+            font-size: 1.1rem;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 1.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 1.2rem;
+            z-index: 1;
+            animation: bob 2s ease-in-out infinite;
         }
 
-        .social-links a span {
-            font-size: 0.9rem;
-            font-weight: 500;
+        @keyframes bob {
+
+            0%,
+            100% {
+                transform: translate(-50%, 0);
+            }
+
+            50% {
+                transform: translate(-50%, 8px);
+            }
         }
 
+        /* ---------- Sections ---------- */
         .section {
-            padding: var(--section-padding) 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 0 40px;
         }
 
         .section-content {
             background: var(--card-background);
-            padding: 3rem;
-            border-radius: 16px;
+            padding: 2.25rem 2.5rem;
+            border-radius: 20px;
             box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
+            width: 100%;
+        }
+
+        .eyebrow {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
         }
 
         .section h2 {
             font-family: 'Outfit', sans-serif;
             font-size: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
             color: var(--primary-color);
+            letter-spacing: -0.01em;
+            position: relative;
+            padding-bottom: 0.7rem;
         }
 
-        .publications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .section h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--gold));
         }
 
-        .publication-card {
-            background: var(--card-background);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--box-shadow);
-            transition: transform var(--transition-speed);
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+        .section p {
+            color: var(--text-color);
         }
 
-        .publication-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(46, 23, 96, 0.2);
+        #about .section-content p {
+            font-size: 1.12rem;
+            max-width: 68ch;
+            color: #37323f;
         }
 
+        #about .section-content p+p {
+            margin-top: 1.25rem;
+        }
+
+        /* ---------- Research ---------- */
         .research-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
         }
 
         .research-card {
             background: var(--card-background);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--box-shadow);
-            transition: transform var(--transition-speed);
+            padding: 1.4rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 6px 20px rgba(46, 23, 96, 0.05);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
             text-decoration: none;
             color: inherit;
             display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-speed);
         }
 
         .research-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(46, 23, 96, 0.2);
+            transform: translateY(-6px);
+            box-shadow: var(--box-shadow-hover);
+            border-color: rgba(119, 65, 129, 0.25);
         }
 
+        .research-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            background: linear-gradient(135deg, rgba(119, 65, 129, 0.12), rgba(201, 154, 46, 0.12));
+            margin-bottom: 0.7rem;
+        }
+
+        .research-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .research-card p {
+            font-size: 0.92rem;
+            color: var(--muted-text);
+            line-height: 1.6;
+        }
+
+        /* ---------- Publications ---------- */
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.75rem;
+        }
+
+        .publication-card {
+            background: var(--card-background);
+            padding: 1.9rem;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 6px 20px rgba(46, 23, 96, 0.05);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--box-shadow-hover);
+            border-color: rgba(119, 65, 129, 0.25);
+        }
+
+        .pub-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            padding: 0.28rem 0.7rem;
+            border-radius: 999px;
+        }
+
+        .badge-venue {
+            color: var(--primary-color);
+            background: rgba(119, 65, 129, 0.1);
+        }
+
+        .badge-year {
+            color: #7a5c12;
+            background: rgba(201, 154, 46, 0.14);
+        }
+
+        .publication-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            margin-bottom: 0.6rem;
+            line-height: 1.35;
+        }
+
+        .publication-card .authors {
+            font-size: 0.95rem;
+            color: var(--muted-text);
+            line-height: 1.6;
+        }
+
+        .publication-card .authors strong {
+            color: var(--text-color);
+        }
+
+        .pub-link {
+            margin-top: auto;
+            padding-top: 1.1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .pub-link i {
+            transition: transform var(--transition-speed);
+        }
+
+        .publication-card:hover .pub-link i {
+            transform: translate(3px, -3px);
+        }
+
+        /* ---------- Links ---------- */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        .link-card {
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--card-background);
+            box-shadow: 0 6px 20px rgba(46, 23, 96, 0.05);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        .link-thumb {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            background: #ece9f4;
+        }
+
+        .link-label {
+            padding: 1rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .link-label i {
+            color: var(--accent-color);
+        }
+
+        .link-card.link-text {
+            justify-content: center;
+        }
+
+        .link-card.link-text .link-label {
+            padding: 1.8rem 1.2rem;
+        }
+
+        /* ---------- Contact ---------- */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.75rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.1rem;
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            background: #fbfaff;
         }
 
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
-            border-radius: 12px;
+            border-radius: 13px;
+            font-size: 1.2rem;
         }
 
+        .contact-item h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            color: var(--primary-color);
+            margin-bottom: 0.1rem;
+        }
 
-        @media (max-width: 768px) {
+        .contact-item p {
+            margin: 0;
+            color: var(--muted-text);
+        }
+
+        .contact-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background: var(--primary-700);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 2.75rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-content .footer-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .footer-content small {
+            display: block;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 0.2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.15rem;
+            transition: color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .footer-social a:hover {
+            color: var(--gold-soft);
+            transform: translateY(-2px);
+        }
+
+        /* ---------- Scroll reveal ---------- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 900px) {
             .profile {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
+                gap: 2.5rem;
             }
 
-            .profile-image {
-                width: 250px;
-                height: 250px;
+            .profile-image-wrap {
                 margin: 0 auto;
             }
 
-            .nav-links {
-                display: none;
-            }
-
-            .profile-info h1 {
-                font-size: 2.5rem;
-            }
-
-            .profile-info h2 {
-                font-size: 1.5rem;
+            .profile-image-wrap::before {
+                inset: 14px -14px -14px 14px;
             }
 
             .social-links {
                 justify-content: center;
             }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 4rem;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                flex-direction: column;
+                gap: 0;
+                padding: 0.5rem 2rem 1rem;
+                box-shadow: 0 12px 30px rgba(46, 23, 96, 0.12);
+                border-bottom: 1px solid var(--border-color);
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.85rem 0;
+                border-bottom: 1px solid var(--border-color);
+                width: 100%;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .profile-info h1 {
+                font-size: 2.6rem;
+            }
+
+            .profile-info h2 {
+                font-size: 1.25rem;
+            }
 
             .section-content {
                 padding: 2rem;
             }
+
+            .scroll-cue {
+                display: none;
+            }
         }
 
-        /* Initial state of the section: hidden and translated */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
+        @media (max-width: 420px) {
+            .container {
+                padding: 0 1.25rem;
+            }
         }
 
-        /* Applied once the section is in the viewport and animated */
-        .animated.fade-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
             }
 
-            100% {
+            .fade-in {
                 opacity: 1;
-                transform: translateY(0);
+                transform: none;
             }
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            /* Responsive grid */
-            gap: 20px;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .links-grid a {
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            background: none;
-            padding: 15px;
-            border-radius: 8px;
-            transition: transform 0.2s ease;
-            display: block;
-            color: black;
-            /* Make links black */
-        }
-
-        .links-grid a:hover {
-            transform: scale(1.05);
-        }
-
-        /* Style for YouTube thumbnail */
-        .youtube-link img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-            transition: transform 0.2s ease;
-        }
-
-        .youtube-link img:hover {
-            transform: scale(1.05);
-        }
-
-        .email-link {
-            color: black;
-            /* Make it black */
-            text-decoration: none;
-            /* Remove underline */
-            font-weight: bold;
-            transition: color 0.2s ease;
-        }
-
-        .email-link:hover {
-            color: gray;
-            /* Change color on hover */
         }
     </style>
     <script type="application/ld+json">
@@ -371,7 +853,7 @@
           "url": "https://yaellebel.github.io/",
           "sameAs": [
             "https://scholar.google.com/citations?user=ScQzqk8AAAAJ",
-            "https://orcid.org/my-orcid?orcid=0009-0000-1865-7543",
+            "https://orcid.org/0009-0000-1865-7543",
             "https://www.linkedin.com/in/yael-lebel-88b137259",
             "https://bsky.app/profile/yaelebel.bsky.social"
           ]
@@ -381,15 +863,20 @@
 </head>
 
 <body>
-    <nav>
+    <nav id="navbar">
         <div class="container nav-content">
-            <div class="logo">Yael Lebel</div>
-            <div class="nav-links">
+            <a href="#" class="logo" aria-label="Yael Lebel — home">
+                <span class="logo-mark">YL</span>
+                <span>Yael Lebel</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
                 <a href="#about">About</a>
                 <a href="#research">Research</a>
                 <a href="#publications">Publications</a>
                 <a href="#links">Links</a>
-
                 <a href="#contact">Contact</a>
             </div>
         </div>
@@ -398,37 +885,43 @@
     <section class="hero">
         <div class="container">
             <div class="profile">
-                <img src="https://github.com/YaelLebel/yaellebel.github.io/blob/main/IMG_0459_1%20(1).png?raw=true"
-                    alt="Yael Lebel -  Computational Immunology Researcher" class="profile-image">
+                <div class="profile-image-wrap">
+                    <img src="profile.png" width="334" height="334"
+                        alt="Portrait of Yael Lebel, computational immunology researcher" class="profile-image">
+                </div>
                 <div class="profile-info">
+                    <span class="eyebrow">Systems Biology &amp; Immunology</span>
                     <h1>Yael Lebel</h1>
-                    <h2>PhD Student in Systems Biology,<br> Prof. Uri Alon's Lab</h2>
-                    <p>Weizmann Institute of Science</p>
+                    <h2>PhD Student in Systems Biology,<br>Prof. Uri Alon's Lab</h2>
+                    <p class="affiliation">Weizmann Institute of Science</p>
                     <div class="social-links">
-                        <a href="https://github.com/YaelLebel"><i class="fab fa-github"></i><span>GitHub</span></a>
-                        <a href="https://www.linkedin.com/in/yael-lebel-88b137259/"><i
-                                class="fab fa-linkedin"></i><span>LinkedIn</span></a>
-                        <a href="https://bsky.app/profile/yaelebel.bsky.social"><i
-                                class="fa-brands fa-bluesky"></i><span>Bluesky</span></a>
-                        <a href="https://scholar.google.com/citations?user=ScQzqk8AAAAJ"><i
-                                class="fas fa-graduation-cap"></i><span>Scholar</span></a>
+                        <a href="https://github.com/YaelLebel" target="_blank" rel="noopener" aria-label="GitHub"><i
+                                class="fab fa-github"></i><span>GitHub</span></a>
+                        <a href="https://www.linkedin.com/in/yael-lebel-88b137259/" target="_blank" rel="noopener"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+                        <a href="https://bsky.app/profile/yaelebel.bsky.social" target="_blank" rel="noopener"
+                            aria-label="Bluesky"><i class="fa-brands fa-bluesky"></i><span>Bluesky</span></a>
+                        <a href="https://scholar.google.com/citations?user=ScQzqk8AAAAJ" target="_blank" rel="noopener"
+                            aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i><span>Scholar</span></a>
+                        <a href="https://orcid.org/0009-0000-1865-7543" target="_blank" rel="noopener"
+                            aria-label="ORCID"><i class="fab fa-orcid"></i><span>ORCID</span></a>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="#about" class="scroll-cue" aria-label="Scroll to content"><i class="fas fa-chevron-down"></i></a>
     </section>
 
     <section id="about" class="section fade-in">
         <div class="container">
             <div class="section-content">
+                <span class="eyebrow">Get to know me</span>
                 <h2>About Me</h2>
                 <p>Coming from the world of physics and math, I aspire to find patterns and rules in the way our body,
                     and particularly our immune system, is designed. I use tools from the worlds of math and physics to
-                    answer basic question in the realms of immunology and aging. </p>
-                <br>
+                    answer basic questions in the realms of immunology and aging.</p>
                 <p>Currently, I am a PhD student in the lab of Prof. Uri Alon at the Weizmann Institute. I am supported
-                    by the Azrieli foundation, under the program for graduate students. </p>
-
+                    by the Azrieli Foundation, under the program for graduate students.</p>
             </div>
         </div>
     </section>
@@ -436,28 +929,31 @@
     <section id="research" class="section fade-in">
         <div class="container">
             <div class="section-content">
+                <span class="eyebrow">What I work on</span>
                 <h2>Research</h2>
                 <div class="research-grid">
                     <div class="research-card">
+                        <div class="card-icon"><i class="fas fa-heart-pulse"></i></div>
                         <h4>Excitable Systems in the Immune System</h4>
                         <p>I use the well-studied mathematical tool of excitable systems to explain various pulsatile
-                            phenomena in the immune systems. I have showed that excitable systems underlie relapses in
+                            phenomena in the immune system. I have shown that excitable systems underlie relapses in
                             autoimmune diseases, such as Multiple Sclerosis; I am now seeking to find more pulsatile
-                            phenomena these class of systems may underlie.</p>
+                            phenomena this class of systems may underlie.</p>
                     </div>
                     <div class="research-card">
+                        <div class="card-icon"><i class="fas fa-shapes"></i></div>
                         <h4>Disease Space Map</h4>
-                        <p>I study the way different pathogens manifest in a diseaese space, constructed of the pathogen
+                        <p>I study the way different pathogens manifest in a disease space, constructed of the pathogen
                             load, the immune response and the damage to the infected individual. I am looking at the
-                            geometrical shapes different pathogens take in this space and how do different interventions
-                            an modify it.</p>
+                            geometrical shapes different pathogens take in this space and how different interventions
+                            can modify it.</p>
                     </div>
                     <div class="research-card">
+                        <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
                         <h4>Ovarian Aging</h4>
-                        <p>I use models of organisms aging to understand ovarian aging and the dynamics of fertility
+                        <p>I use models of organism aging to understand ovarian aging and the dynamics of fertility
                             throughout life.</p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -466,58 +962,82 @@
     <section id="publications" class="section fade-in">
         <div class="container">
             <div class="section-content">
+                <span class="eyebrow">Selected work</span>
                 <h2>Publications</h2>
                 <div class="publications-grid">
 
-                    <a href="https://www.science.org/doi/10.1126/sciadv.aeb0921" target="_blank"
+                    <a href="https://www.science.org/doi/10.1126/sciadv.aeb0921" target="_blank" rel="noopener"
                         class="publication-card">
-                        <h4> Excitability as a Design Principle in the Immune System</h4>
-                        <p><strong>Yael Lebel</strong>, Uri Alon</p>
-                        <p> Science Advances, 2026</p>
+                        <div class="pub-badges">
+                            <span class="badge badge-venue">Science Advances</span>
+                            <span class="badge badge-year">2026</span>
+                        </div>
+                        <h4>Excitability as a Design Principle in the Immune System</h4>
+                        <p class="authors"><strong>Yael Lebel</strong>, Uri Alon</p>
+                        <span class="pub-link">View publication <i class="fas fa-arrow-up-right-from-square"></i></span>
                     </a>
 
-                    <a href="https://www.science.org/doi/10.1126/sciadv.aeb3911" target="_blank"
+                    <a href="https://www.science.org/doi/10.1126/sciadv.aeb3911" target="_blank" rel="noopener"
                         class="publication-card">
-                        <h4> From Plato to Pareto: Defining the shape of infection’s disease space </h4>
-                        <p><strong>Yael Lebel</strong>, Avni S. Gupta, Victoria Chevée, Uri Alon, David S. Schneider
-                        </p>
-                        <p> Science Advances, 2026</p>
+                        <div class="pub-badges">
+                            <span class="badge badge-venue">Science Advances</span>
+                            <span class="badge badge-year">2026</span>
+                        </div>
+                        <h4>From Plato to Pareto: Defining the shape of infection's disease space</h4>
+                        <p class="authors"><strong>Yael Lebel</strong>, Avni S. Gupta, Victoria Chevée, Uri Alon, David
+                            S. Schneider</p>
+                        <span class="pub-link">View publication <i class="fas fa-arrow-up-right-from-square"></i></span>
                     </a>
 
-                    <a href="https://doi.org/10.1016/j.isci.2023.108084" target="_blank" class="publication-card">
+                    <a href="https://doi.org/10.1016/j.isci.2023.108084" target="_blank" rel="noopener"
+                        class="publication-card">
+                        <div class="pub-badges">
+                            <span class="badge badge-venue">iScience</span>
+                            <span class="badge badge-year">2023</span>
+                        </div>
                         <h4>Excitable dynamics of flares and relapses in autoimmune diseases</h4>
-                        <p>
-                            <p><strong>Yael Lebel</strong>, Tomer Milo, Alon Bar, Avi Mayo, Uri Alon</p>
-                        </p>
-                        <p>IScience, 2023</p>
+                        <p class="authors"><strong>Yael Lebel</strong>, Tomer Milo, Alon Bar, Avi Mayo, Uri Alon</p>
+                        <span class="pub-link">View publication <i class="fas fa-arrow-up-right-from-square"></i></span>
                     </a>
-                    <a href="https://doi.org/10.21468/SciPostPhys.15.1.022" target="_blank" class="publication-card">
+
+                    <a href="https://doi.org/10.21468/SciPostPhys.15.1.022" target="_blank" rel="noopener"
+                        class="publication-card">
+                        <div class="pub-badges">
+                            <span class="badge badge-venue">SciPost Physics</span>
+                            <span class="badge badge-year">2023</span>
+                        </div>
                         <h4>Chaos enhancement in large-spin chains</h4>
-                        <p><strong>Yael Lebel</strong>, Lea F. Santos, Yevgeny Bar Lev</p>
-                        <p> SciPost Physics, 2023</p>
+                        <p class="authors"><strong>Yael Lebel</strong>, Lea F. Santos, Yevgeny Bar Lev</p>
+                        <span class="pub-link">View publication <i class="fas fa-arrow-up-right-from-square"></i></span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
     <section id="links" class="section fade-in">
         <div class="container">
             <div class="section-content">
+                <span class="eyebrow">Talks &amp; press</span>
                 <h2>Links</h2>
                 <div class="links-grid">
-                    <!-- YouTube Video as Thumbnail -->
-                    <a href="https://www.youtube.com/watch?v=MdwqWx5emo4" target="_blank" class="youtube-link">
-                        <img src="https://i.ytimg.com/vi/MdwqWx5emo4/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDlBFnlb5I6lja7Xo_9xK6Pryj7ug"
-                            alt="Watch my talk">
+                    <a href="https://www.youtube.com/watch?v=MdwqWx5emo4" target="_blank" rel="noopener"
+                        class="link-card">
+                        <img class="link-thumb"
+                            src="https://i.ytimg.com/vi/MdwqWx5emo4/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDlBFnlb5I6lja7Xo_9xK6Pryj7ug"
+                            alt="Watch my talk on YouTube">
+                        <span class="link-label"><i class="fab fa-youtube"></i>Watch my talk</span>
                     </a>
                     <a href="https://www.weizmann.ac.il/WeizmannCompass/sections/students/beyond-brilliant"
-                        target="_blank" class="youtube-link">
-                        <img src="https://github.com/YaelLebel/yaellebel.github.io/blob/main/press_weizmann_compass_thmbnail.png?raw=true"
-                            alt="Press release">
+                        target="_blank" rel="noopener" class="link-card">
+                        <img class="link-thumb" src="press_weizmann_compass.jpg" width="900" height="506"
+                            loading="lazy" alt="Weizmann Compass press feature">
+                        <span class="link-label"><i class="fas fa-newspaper"></i>Weizmann Compass feature</span>
                     </a>
-                    <!-- Other links -->
-                    <a href="https://www.linkedin.com/company/86465767/" target="_blank">ShePhysics @ Weizmann</a>
-
+                    <a href="https://www.linkedin.com/company/86465767/" target="_blank" rel="noopener"
+                        class="link-card link-text">
+                        <span class="link-label"><i class="fas fa-atom"></i>ShePhysics @ Weizmann</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -526,6 +1046,7 @@
     <section id="contact" class="section fade-in">
         <div class="container">
             <div class="section-content">
+                <span class="eyebrow">Get in touch</span>
                 <h2>Contact</h2>
                 <div class="contact-grid">
                     <div class="contact-item">
@@ -534,8 +1055,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p><a href="mailto:yael.lebel@weizmann.ac.il"
-                                    class="email-link">yael.lebel@weizmann.ac.il</a></p>
+                            <p><a href="mailto:yael.lebel@weizmann.ac.il">yael.lebel@weizmann.ac.il</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -551,29 +1071,74 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <span class="footer-name">Yael Lebel</span>
+                <small>Systems Biology &amp; Immunology · Weizmann Institute of Science</small>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/YaelLebel" target="_blank" rel="noopener" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/yael-lebel-88b137259/" target="_blank" rel="noopener"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://bsky.app/profile/yaelebel.bsky.social" target="_blank" rel="noopener"
+                    aria-label="Bluesky"><i class="fa-brands fa-bluesky"></i></a>
+                <a href="https://scholar.google.com/citations?user=ScQzqk8AAAAJ" target="_blank" rel="noopener"
+                    aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0000-1865-7543" target="_blank" rel="noopener"
+                    aria-label="ORCID"><i class="fab fa-orcid"></i></a>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        const isInViewport = (el) => {
-            const rect = el.getBoundingClientRect();
-            return rect.top <= window.innerHeight && rect.bottom >= 0;
-        };
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', open);
+            navToggle.innerHTML = open ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        // Close mobile menu after clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', false);
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
 
-        const sections = document.querySelectorAll('.fade-in');
+        // Nav shadow on scroll
+        const navbar = document.getElementById('navbar');
+        const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 20);
+        window.addEventListener('scroll', onScroll);
+        onScroll();
 
-        const checkSections = () => {
-            sections.forEach(section => {
-                // Only add the fade-in class if the section is in the viewport
-                if (isInViewport(section) && !section.classList.contains('animated')) {
-                    section.classList.add('animated'); // Add class to avoid re-animation
-                    section.classList.add('fade-in');
+        // Scroll-reveal via IntersectionObserver
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        };
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => revealObserver.observe(el));
 
-        // Check sections when the page is loaded
-        window.addEventListener('load', checkSections);
-
-        // Check sections when scrolling
-        window.addEventListener('scroll', checkSections);
+        // Active nav link based on section in view
+        const navAnchors = Array.from(navLinks.querySelectorAll('a'));
+        const activeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+                }
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        document.querySelectorAll('section[id]').forEach(section => activeObserver.observe(section));
     </script>
 
 </body>
